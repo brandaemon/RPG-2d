@@ -10,6 +10,7 @@ public class playerMovment : MonoBehaviour
     float vertical;
     public GameObject attack;
     public float offset;
+    public int health;
 
     // Start is called before the first frame update
     void Start()
@@ -20,20 +21,28 @@ public class playerMovment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        
+
         if (horizontal < 0.0f)
         {
             //transform.localScale.x *= -1;
         }
-        
+
 
 
         if (Input.GetMouseButtonDown(0))
-            Instantiate(attack, transform.position+new Vector3(offset,0f, 0f), attack.transform.rotation);
+            Instantiate(attack, transform.position + new Vector3(offset, 0f, 0f), attack.transform.rotation);
+
+
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+        
 
     }
 
@@ -44,5 +53,20 @@ public class playerMovment : MonoBehaviour
         position.y = position.y + speed * vertical * Time.deltaTime;
 
         rb.MovePosition(position);
-    }   
+
+
+
+        
+
+
+    }
+
+    void OnTriggerEnter2D(Collider2D colision)
+    {
+        if (colision.gameObject.CompareTag("InfVAttack"))
+        {
+            health -= 1;
+            print(health);
+        }
+    }
 }

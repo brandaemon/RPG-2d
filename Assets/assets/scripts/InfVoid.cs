@@ -6,9 +6,10 @@ public class InfVoid : MonoBehaviour
 {
     // Start is called before the first frame update
     public int health;
+    private Animator animator;
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -16,6 +17,11 @@ public class InfVoid : MonoBehaviour
     {
         if (health <= 0)
             Destroy(gameObject);
+
+        if (Input.GetKeyDown("e"))
+        {
+            animator.SetTrigger("attack");
+        }
 
 
     }
