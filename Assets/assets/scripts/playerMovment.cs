@@ -11,6 +11,7 @@ public class playerMovment : MonoBehaviour
     public GameObject attack;
     public float offset;
     public int health;
+    private bool facingRight = true;
 
     // Start is called before the first frame update
     void Start()
@@ -26,21 +27,29 @@ public class playerMovment : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
 
 
-        if (horizontal < 0.0f)
+        if (horizontal < 0.0f && facingRight == true)
         {
-            //transform.localScale.x *= -1;
+            Flip();
+        }
+        
+        if (horizontal > 0.0f && facingRight == false)
+        {
+            Flip();
         }
 
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && facingRight == true)
             Instantiate(attack, transform.position + new Vector3(offset, 0f, 0f), attack.transform.rotation);
+
+        if (Input.GetMouseButtonDown(0) && facingRight == false)
+            Instantiate(attack, transform.position + new Vector3(-offset, 0f, 0f), attack.transform.rotation);
 
 
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            print("You dead, L");
         }
         
 
@@ -68,5 +77,15 @@ public class playerMovment : MonoBehaviour
             health -= 1;
             print(health);
         }
+    }
+
+    void Flip()
+    {
+        print("flipping");
+        Vector3 NewScale = transform.localScale;
+        NewScale.x *= -1;
+        transform.localScale = NewScale;
+
+        facingRight = !facingRight;
     }
 }

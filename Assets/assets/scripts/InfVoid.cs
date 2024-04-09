@@ -7,8 +7,12 @@ public class InfVoid : MonoBehaviour
     // Start is called before the first frame update
     public int health;
     private Animator animator;
+    public float speed;
+    public float followDistace;
+    Transform player;
     void Start()
     {
+        player = GameObject.Find("Player").GetComponent<Transform>();
         animator = GetComponent<Animator>();
     }
 
@@ -21,6 +25,20 @@ public class InfVoid : MonoBehaviour
         if (Input.GetKeyDown("e"))
         {
             animator.SetTrigger("attack");
+        }
+
+        if (Vector2.Distance <= 1)
+            {
+                animator.SetTrigger("attack");
+            }
+
+        
+
+        if (Vector2.Distance(player.position, transform.position) > followDistace)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.position, speed);
+            
+            
         }
 
 
