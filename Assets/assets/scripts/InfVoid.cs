@@ -10,6 +10,9 @@ public class InfVoid : MonoBehaviour
     public float speed;
     public float followDistace;
     Transform player;
+     float horizontal;
+    float vertical;
+    private bool facingRight = false;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
@@ -27,10 +30,24 @@ public class InfVoid : MonoBehaviour
             animator.SetTrigger("attack");
         }
 
-        if (Vector2.Distance <= 1)
+        if (Vector2.Distance(player.position, transform.position) <= 1.5f)
             {
                 animator.SetTrigger("attack");
             }
+
+        if (player.transform.position.x - transform.position.x >= 0f && facingRight == false)
+            {
+                Flip();
+            }
+
+        if (player.transform.position.x - transform.position.x <= 0f && facingRight == true)
+            {
+                Flip();
+            }
+        
+        
+
+            
 
         
 
@@ -41,6 +58,11 @@ public class InfVoid : MonoBehaviour
             
         }
 
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+
+
+        
 
     }
 
@@ -72,4 +94,12 @@ public class InfVoid : MonoBehaviour
         }
     }
     */
+    void Flip()
+    {
+        Vector3 NewScale = transform.localScale;
+        NewScale.x *= -1;
+        transform.localScale = NewScale;
+
+        facingRight = !facingRight;
+    }
 }
