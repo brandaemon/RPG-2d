@@ -9,10 +9,12 @@ public class InfVoid : MonoBehaviour
     private Animator animator;
     public float speed;
     public float followDistace;
+    public float activeDistance;
     Transform player;
      float horizontal;
     float vertical;
     private bool facingRight = false;
+    public GameObject explosion;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
@@ -25,10 +27,6 @@ public class InfVoid : MonoBehaviour
         if (health <= 0)
             Destroy(gameObject);
 
-        if (Input.GetKeyDown("e"))
-        {
-            animator.SetTrigger("attack");
-        }
 
         if (Vector2.Distance(player.position, transform.position) <= 1.5f)
             {
@@ -51,11 +49,9 @@ public class InfVoid : MonoBehaviour
 
         
 
-        if (Vector2.Distance(player.position, transform.position) > followDistace)
+        if (Vector2.Distance(player.position, transform.position) > followDistace && Vector2.Distance(player.position, transform.position) < activeDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed);
-            
-            
         }
 
         horizontal = Input.GetAxis("Horizontal");
@@ -78,8 +74,27 @@ public class InfVoid : MonoBehaviour
         if (colision.gameObject.CompareTag("Attack"))
         {
             print("attacked");
-            health -= 1;
+            health -= 10;
             print(health);
+            
+        }
+
+        if (colision.gameObject.CompareTag("FireBallT1"))
+        {
+            print("attacked");
+            health -= 25;
+            print(health);
+            Destroy(colision.gameObject);
+            Instantiate(explosion, transform.position, transform.rotation);
+        }
+
+        if (colision.gameObject.CompareTag("FireBallT1Left"))
+        {
+            print("attacked");
+            health -= 25;
+            print(health);
+            Destroy(colision.gameObject);
+            
         }
         
 

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Attack
   - InfVAttack
+  - FireBallT1
+  - FireBallT1Left
+  - ManaCrystal1
   layers:
   - Default
   - TransparentFX
