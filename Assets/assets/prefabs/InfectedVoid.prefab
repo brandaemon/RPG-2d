@@ -220,13 +220,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7750720383373618110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dedac3edef87844b942b0f995776534, type: 3}
+  m_Script: {fileID: 11500000, guid: bdca88532de8f264da0c26d301046dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  speed: 0.003
-  followDistace: 1.18
-  activeDistance: 10
+  health: 50
+  speed: 3
+  followDistace: 1
+  activeDistance: 5000
   explosion: {fileID: 1466056623643647434, guid: b739bc97dc7932e4b9773917406ac8b8, type: 3}
 --- !u!50 &8560310102543332940
 Rigidbody2D:

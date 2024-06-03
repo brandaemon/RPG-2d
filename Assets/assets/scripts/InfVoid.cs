@@ -51,7 +51,7 @@ public class InfVoid : MonoBehaviour
 
         if (Vector2.Distance(player.position, transform.position) > followDistace && Vector2.Distance(player.position, transform.position) < activeDistance)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed);
+            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         }
 
         horizontal = Input.GetAxis("Horizontal");
