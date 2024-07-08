@@ -8,7 +8,7 @@ public class InfVoid : MonoBehaviour
     public int health;
     private Animator animator;
     public float speed;
-    public float followDistace;
+    public float followDistance;
     public float activeDistance;
     Transform player;
      float horizontal;
@@ -49,7 +49,7 @@ public class InfVoid : MonoBehaviour
 
         
 
-        if (Vector2.Distance(player.position, transform.position) > followDistace && Vector2.Distance(player.position, transform.position) < activeDistance)
+        if (Vector2.Distance(player.position, transform.position) > followDistance && Vector2.Distance(player.position, transform.position) < activeDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         }
@@ -64,13 +64,7 @@ public class InfVoid : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D colision)     
     {
-        /*
-        if (colision.gameObject.CompareTag("Player"))
-        {
-            health -= 1;
-            print(health);
-        }
-        */
+        
         if (colision.gameObject.CompareTag("Attack"))
         {
             print("attacked");
@@ -94,21 +88,12 @@ public class InfVoid : MonoBehaviour
             health -= 25;
             print(health);
             Destroy(colision.gameObject);
-            
+            Instantiate(explosion, transform.position, transform.rotation);
         }
         
 
     }
-    /*
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        print("attacked");
-        if (col.gameObject.CompareTag("Attack"))
-        {
-            print("attacked");
-        }
-    }
-    */
+    
     void Flip()
     {
         Vector3 NewScale = transform.localScale;

@@ -21,5 +21,7 @@ public class ManaUI : MonoBehaviour
     {
         ManaText.text = "Mana: " + Mathf.Round(playerMovement.mana);
 
+        
+
     }
 }

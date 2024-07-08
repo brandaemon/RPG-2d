@@ -9,6 +9,7 @@ TagManager:
   - FireBallT1
   - FireBallT1Left
   - ManaCrystal1
+  - sword
   layers:
   - Default
   - TransparentFX
