@@ -68,7 +68,7 @@ public class InfVoid : MonoBehaviour
         if (colision.gameObject.CompareTag("Attack"))
         {
             print("attacked");
-            health -= 10;
+            //health -= colision.gameObject;
             print(health);
             
         }
