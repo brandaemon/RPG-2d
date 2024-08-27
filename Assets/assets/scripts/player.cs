@@ -19,6 +19,7 @@ public class player : MonoBehaviour
     private Animator animator;
     private Invintory invintory;
     public item item;
+    public GameObject explosion;
         
 
 
@@ -52,10 +53,10 @@ public class player : MonoBehaviour
 
 
 
-        if (Input.GetMouseButtonDown(0) && facingRight == true)
+        if (Input.GetMouseButtonDown(0) && facingRight == true && invintory.paused == false)
             Instantiate(item.attackAnimation, transform.position + new Vector3(offset, 0f, 0f), attack.transform.rotation);
 
-        if (Input.GetMouseButtonDown(0) && facingRight == false)
+        if (Input.GetMouseButtonDown(0) && facingRight == false && invintory.paused == false)
             Instantiate(item.attackAnimation, transform.position + new Vector3(-offset, 0f, 0f), attack.transform.rotation);
 
 
@@ -116,6 +117,8 @@ public class player : MonoBehaviour
             //animator.ResetTrigger("dance");
             animator.SetTrigger("dance");   
         }
+
+        
             
 
             
@@ -160,6 +163,12 @@ public class player : MonoBehaviour
             Destroy(colision.gameObject);
         }
 
+        if (colision.gameObject.CompareTag("BossLaser"))
+        {
+            health -= 25;
+            Destroy(colision.gameObject);
+            Instantiate(explosion, transform.position, transform.rotation);
+        }
             
     }
 
