@@ -12,6 +12,7 @@ TagManager:
   - sword
   - Infvoid
   - BossLaser
+  - TileMap
   layers:
   - Default
   - TransparentFX

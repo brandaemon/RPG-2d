@@ -73,25 +73,39 @@ public class InfVoid : MonoBehaviour
             
         }
 
-        if (colision.gameObject.CompareTag("FireBallT1"))
-        {
-            print("attacked");
-            health -= 25;
-            print(health);
-            Destroy(colision.gameObject);
-            Instantiate(explosion, transform.position, transform.rotation);
-        }
-
-        if (colision.gameObject.CompareTag("FireBallT1Left"))
-        {
-            print("attacked");
-            health -= 25;
-            print(health);
-            Destroy(colision.gameObject);
-            Instantiate(explosion, transform.position, transform.rotation);
-        }
+        
         
 
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("FireBallT1"))
+        {
+            print("attacked");
+            health -= 25;
+            print(health);
+            Destroy(col.gameObject);
+            Instantiate(explosion, transform.position, transform.rotation);
+        }
+
+        if (col.gameObject.CompareTag("FireBallT1Left"))
+        {
+            print("attacked");
+            health -= 25;
+            print(health);
+            Destroy(col.gameObject);
+            Instantiate(explosion, transform.position, transform.rotation);
+        }
+
+        if (col.gameObject.CompareTag("BossLaser"))
+        {
+            print("attacked");
+            health -= 25;
+            print(health);
+            Destroy(col.gameObject);
+            Instantiate(explosion, transform.position, transform.rotation);
+        }
     }
     
     void Flip()

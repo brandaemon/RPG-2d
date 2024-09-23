@@ -157,19 +157,26 @@ public class player : MonoBehaviour
             Destroy(colision.gameObject);
         }
 
-        if (colision.gameObject.CompareTag("sword")) 
-        {
-            invintory.hassword = true;
-            Destroy(colision.gameObject);
-        }
+        
 
-        if (colision.gameObject.CompareTag("BossLaser"))
+        
+            
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("BossLaser"))
         {
             health -= 25;
-            Destroy(colision.gameObject);
+            Destroy(col.gameObject);
             Instantiate(explosion, transform.position, transform.rotation);
+
+            if (col.gameObject.CompareTag("sword")) 
+        {
+            invintory.hassword = true;
+            Destroy(col .gameObject);
         }
-            
+        }
     }
 
 

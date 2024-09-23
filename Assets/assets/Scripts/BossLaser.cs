@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class BossLaser : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public GameObject explosion;
+    void OnCollisionEnter2D(Collision2D col)
     {
-        
+        if (col.gameObject.CompareTag("TileMap"))
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }
