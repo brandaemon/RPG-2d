@@ -8,12 +8,14 @@ public class BigRobotBoss1 : MonoBehaviour
     public GameObject laser;
     public Transform LeftLaser;
     public Transform RightLaser;
-    public GameObject player; 
+    public GameObject player;
+    public int health;
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("Attack", 1f, 2f);
         player = GameObject.Find("Player");
+        health = 100;
 
         
     }
@@ -26,9 +28,8 @@ public class BigRobotBoss1 : MonoBehaviour
         newLaser1.transform.right = player.transform.position - newLaser1.transform.position;
         //newLaser1.transform.rotation = Quaternion.Euler(newLaser1.transform.localEulerAngles.x, newLaser1.transform.localEulerAngles.y, newLaser1.transform.localEulerAngles.z);
         newLaser1.GetComponent<Rigidbody2D>().AddForce(10f * newLaser1.transform.right, ForceMode2D.Impulse);
-<<<<<<< Updated upstream
-        Instantiate(laser, RightLaser.position, RightLaser.rotation);
-=======
+        //Instantiate(laser, RightLaser.position, RightLaser.rotation);
+
 
 
 
@@ -37,13 +38,49 @@ public class BigRobotBoss1 : MonoBehaviour
         newLaser2.transform.right = player.transform.position - newLaser2.transform.position;
         newLaser2.GetComponent<Rigidbody2D>().AddForce(10f * newLaser2.transform.right, ForceMode2D.Impulse);
 
-        
+       
 
 
 
-        
->>>>>>> Stashed changes
    }
 
-   
+    void Update()
+    {
+        print("Boss health: " + health);
+        if (health == 0)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("heavySword"))
+        {
+            health -= 20;
+            
+        }
+
+        if (col.gameObject.CompareTag("Attack"))
+        {
+            health -= 10;
+            
+        }
+
+        if (col.gameObject.CompareTag("FireBallT1"))
+        {
+            health -= 30;
+            print("working");
+            
+        }
+
+        if (col.gameObject.CompareTag("FireBallT1Left"))
+        {
+            health -= 30;
+            print("working");
+        }
+    }
+
+
 }

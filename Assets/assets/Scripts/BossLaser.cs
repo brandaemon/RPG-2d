@@ -13,5 +13,11 @@ public class BossLaser : MonoBehaviour
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
+
+        if (col.gameObject.CompareTag("BossLaser"))
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }

@@ -27,5 +27,7 @@ public class swordSlash : MonoBehaviour
             collision.gameObject.GetComponent<InfVoid>().health -= 20;
             print("massive damage");
         }
+
+        
     }
 }
