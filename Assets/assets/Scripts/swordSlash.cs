@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +25,7 @@ public class swordSlash : MonoBehaviour
         if (collision.gameObject.CompareTag("Infvoid"))
         {
             collision.gameObject.GetComponent<InfVoid>().health -= 20;
-            print("massive damage");
+            
         }
 
         

@@ -62,12 +62,26 @@ public class player : MonoBehaviour
 
 
 
+        if(Input.GetMouseButtonDown(1) && mana >= 20)
+        {
+            Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            target.z = 1;
 
-        if (Input.GetMouseButtonDown(1) && facingRight == true){
+            Vector2 direction = (target - transform.position).normalized;
+
+            GameObject fireball = Instantiate(FireBallT1, transform.position, Quaternion.identity);
+
+            fireball.transform.right = direction;
+
+        }
+
+
+
+
+        /*if (Input.GetMouseButtonDown(1) && facingRight == true){
             if (mana >= 10){
                 GameObject fireball = Instantiate(FireBallT1, transform.position + new Vector3(offset, 0f, 0f), FireBallT1.transform.rotation);
                 fireball.GetComponent<FireBall>().SetDirection(facingRight);
-                print("fireball");
                 mana -= 10;  
             }
                 
@@ -77,13 +91,11 @@ public class player : MonoBehaviour
             if (mana >= 10){
                 GameObject fireball = Instantiate(FireBallT1Left, transform.position + new Vector3(-offset, 0f, 0f), FireBallT1Left.transform.rotation);
                 fireball.GetComponent<FireBall>().SetDirection(facingRight);
-                print("fireball");
-                    
                 mana -= 10;
             }
             
                 
-        }
+        }*/
 
 
         if (health <= 0)
@@ -177,6 +189,9 @@ public class player : MonoBehaviour
             Destroy(col .gameObject);
         }
         }
+
+
+        
     }
 
 

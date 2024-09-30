@@ -10,12 +10,14 @@ public class BigRobotBoss1 : MonoBehaviour
     public Transform RightLaser;
     public GameObject player;
     public int health;
+    public GameObject explosion;
+    
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("Attack", 1f, 2f);
         player = GameObject.Find("Player");
-        health = 100;
+        health = 1000;
 
         
     }
@@ -47,14 +49,14 @@ public class BigRobotBoss1 : MonoBehaviour
     void Update()
     {
         print("Boss health: " + health);
-        if (health == 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
 
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("heavySword"))
         {
@@ -71,15 +73,21 @@ public class BigRobotBoss1 : MonoBehaviour
         if (col.gameObject.CompareTag("FireBallT1"))
         {
             health -= 30;
-            print("working");
+            
+            Instantiate(explosion, col.gameObject.transform.position, transform.rotation);
+            Destroy(col.gameObject);
+            
             
         }
 
         if (col.gameObject.CompareTag("FireBallT1Left"))
         {
             health -= 30;
-            print("working");
+            
+             Instantiate(explosion, col.gameObject.transform.position, transform.rotation);
+            Destroy(col.gameObject);
         }
+           
     }
 
 

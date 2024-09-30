@@ -147641,6 +147641,7 @@ MonoBehaviour:
   RightLaser: {fileID: 1827322685}
   player: {fileID: 0}
   health: 0
+  explosion: {fileID: 1466056623643647434, guid: b739bc97dc7932e4b9773917406ac8b8, type: 3}
 --- !u!212 &700169060
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -147739,7 +147740,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -151553,7 +151554,7 @@ GameObject:
   - component: {fileID: 812412115}
   - component: {fileID: 812412116}
   - component: {fileID: 812412117}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}

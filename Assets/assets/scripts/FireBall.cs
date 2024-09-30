@@ -11,6 +11,7 @@ public class FireBall : MonoBehaviour
     public int timer;
     public player player;
     public bool facingRight;
+    public GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -41,12 +42,29 @@ public class FireBall : MonoBehaviour
                     Destroy(gameObject);
                 }
         } else {
-            transform.Translate(Vector2.left * Time.deltaTime * speed);
+            transform.Translate(Vector2.right * Time.deltaTime * speed);
 
             timer -= 1;
             if (timer <= 0){
                 Destroy(gameObject); 
             }
         }    
+    }
+
+
+    void OnCollisionEnter2D(Collision2D col){
+    
+        if (col.gameObject.CompareTag("BossLaser"))
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+
+        if (col.gameObject.CompareTag("TileMap"))
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+    
     }
 }
